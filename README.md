@@ -16,10 +16,24 @@ Ich habe für meinen Test einen Wemos D1 Mini benutzt. Auf diese wird zunächst 
 
 Wemos/ESP8266 -> TuyaMCU Board
 ------------------------------
-3,3V -> VCC
-GND -> GND
-RX -> TXD
-TX -> RXD
+3,3V > VCC
+GND > GND
+RX > TXD
+TX > RXD
 
 ![alt text](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/schematic1.png?raw=true)
 
+Spätestens jetzt die ESPHome Vorlage auf den ESP flashen. Natürlich muss diese nach eigenen Wünschen noch angepasst werden. Zur Verfügung steht eine Deutschne, sowie eine Englische Version.
+
+Die Vorlage stellt drei Schalter zur Verfügung: 
+- Heizen An- Aus
+- Display-Dimmer An- Aus
+- Kindersperre An- Aus
+
+Folgende Sensoren:
+- Raumtemperatur
+
+Folgende Nummern (die als Slider eingestellt werden können):
+- Zieltemperatur (05-45°C)
+- Heizmodus (0 = Maximaler Modus (2500W), 1 = Mittlerer Modus (1000W), 2 = Minimaler Modus)
+- Timer (0-24 Stunden, dabei ist 0 zum ausschalten des Timer)
