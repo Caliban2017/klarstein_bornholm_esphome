@@ -10,7 +10,7 @@ Zunächst muss das Gerät geöffnet werden, dazu werden die Schrauben Seitlich a
 
 Diese MCU muss nun ausgelötet werden. Am besten funktioniert dies mit einer Heißluftstation, alternativ kann man es aber auch mit Entlötlitze oder Entlötpumpe probieren. Dabei aber natürlich darauf achten nicht die Lötpads zu zerstören!
 
-(https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/bild1.png)
+!(https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/bild1.png)
 
 Ich habe für meinen Test einen Wemos D1 Mini benutzt. Auf diese wird zunächst ESPHome aufgespielt, dazu kann die von mir zur Verfügung gestellte Vorlage benutzt werden, die schon alle Datenpunkte für die UART Verbindung zur Verfügung stellt. Die Verkabelung erfolgt so:
 
