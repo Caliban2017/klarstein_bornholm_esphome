@@ -1,5 +1,4 @@
-# klarstein_bornholm_esphome
-Replacement of TuyaMCU WBR3 to ESP8266 for Klarstein Bornholm Heater
+# Klarstein Bornholm 2500W Konvektionsheizer MCU Austausch
 
 In den neuen Klarstein Bornholm Modellen mit 2500W werden nicht mehr wie bei der vorherigen 2000W Version auf ESP basierende MCU's verbaut. In den neueren Modellen befindet sich ein auf RT basierender Chip, welcher nicht mehr ohne weiteres mit Tasmota geflashed werden kann. Glücklicherweise lässt sich die WBR3 MCU jedoch gegen ein ESP8266 oder ESP-12F Board austauschen. Die Kommunikation findet auch hier wie beim Vorgänger Seriell statt.
 
