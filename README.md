@@ -17,8 +17,11 @@ Ich habe für meinen Test einen Wemos D1 Mini benutzt. Auf diese wird zunächst 
 Wemos/ESP8266 -> TuyaMCU Board
 ------------------------------
 3,3V > VCC
+
 GND > GND
+
 RX > TXD
+
 TX > RXD
 
 ![alt text](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/schematic1.png?raw=true)
