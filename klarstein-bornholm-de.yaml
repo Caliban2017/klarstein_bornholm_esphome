@@ -1,0 +1,97 @@
+substitutions:
+  ssid_ap: Klarstein AP # maximal 32 Zeichen!
+  devicename: esphome_klarstein # Gerätename für WiFi etc.
+  friendly_name: "ESPHome (Klarstein)" # Titel für das Gerät
+  area: "Wohnzimmer" # Raum
+  rx_pin: GPIO1 # RX Pin am ESP
+  tx_pin: GPIO3 # TX Pin am ESP
+
+esphome:
+  name: "${devicename}"
+  friendly_name: "${friendly_name}"
+  comment: "Klarstein Bornhorm Konvektionsheizung"
+
+esp8266:
+  board: d1_mini
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "-- KEY HIER EINFÜGEN! --"
+
+ota:
+  - platform: esphome
+    password: "-- PW HIER EINFÜGEN! --"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${ssid_ap}"
+    password: "-- PW HIER EINFÜGEN! --"
+
+captive_portal:
+
+uart:
+  tx_pin: "${tx_pin}"
+  rx_pin: "${rx_pin}"
+  baud_rate: 9600
+
+tuya:
+
+switch:
+  - platform: "tuya"
+    name: "Power"
+    switch_datapoint: 1
+    id: "klarstein_power"
+    icon: mdi:heat-wave
+  - platform: "tuya"
+    name: "Display-Dimm"
+    switch_datapoint: 5
+    id: "klarstein_display"
+    icon: mdi:monitor-screenshot
+  - platform: "tuya"
+    name: "Kindersicherung"
+    switch_datapoint: 6
+    id: "klarstein_kindersicherung"
+    icon: mdi:human-child
+
+sensor:
+  - platform: "tuya"
+    name: "Temperatur"
+    device_class: TEMPERATURE
+    state_class: measurement
+    unit_of_measurement: "°C"
+    accuracy_decimals: 0
+    sensor_datapoint: 12
+
+number:
+  - platform: "tuya"
+    name: "Heizmodus"
+    id: "klarstein_heizmodus"
+    icon: mdi:radiator
+    number_datapoint: 4
+    min_value: 0
+    max_value: 2
+    step: 1
+  - platform: "tuya"
+    name: "Zieltemperatur"
+    id: "klarstein_zieltemperatur"
+    icon: mdi:sun-thermometer
+    number_datapoint: 2
+    min_value: 5
+    max_value: 45
+    step: 1
+  - platform: "tuya"
+    name: "Timer (Stunden)"
+    id: "klarstein_timer"
+    icon: mdi:timer
+    number_datapoint: 10
+    min_value: 0
+    max_value: 24
+    step: 1
