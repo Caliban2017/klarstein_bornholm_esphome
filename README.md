@@ -1,8 +1,8 @@
 # Klarstein Bornholm 2500W Konvektionsheizer MCU Austausch
 
-In den neuen Klarstein Bornholm Modellen mit 2500W werden nicht mehr wie bei der vorherigen 2000W Version auf ESP basierende MCU's verbaut. In den neueren Modellen befindet sich ein auf RT Chip, welcher nicht mehr ohne weiteres mit Tasmota geflashed werden kann. Glücklicherweise lässt sich die Tuya WBR3 MCU jedoch gegen ein ESP8266- oder ESP-12F Board austauschen. Die Kommunikation findet auch hier wie beim Vorgänger Seriell statt.
+In den neuen Klarstein Bornholm Modellen mit 2500W werden nicht mehr wie bei der vorherigen 2000W Version auf ESP basierende MCU's verbaut. In den neueren Modellen befindet sich ein RT Chip, der nicht mehr ohne weiteres mit Tasmota geflashed werden kann. Glücklicherweise lässt sich jedoch die neue Tuya WBR3 MCU gegen ein ESP8266- oder ESP-12F Board austauschen. Die Kommunikation findet auch hier wie beim Vorgänger Seriell statt.
 
-Natürlich lässt sich das ganze auch problemlos per Tasmota betreiben, noch besser funktioniert es jedoch für meinen Geschmack mit ESPHome. Hier ist kein rumgefummel mit dem Backlog und IDs nötig. ESPHome liest die ID's von dem Tuya Gerät aus und stellt sie dann mit den Datenpunkten zur Verfügung. Man muss anschließend nur noch rausfinden, welche ID zu welcher Funktion gehört. Dies habe ich bereits gemacht. Einfach meine ESPHome Vorlage benutzen.
+Natürlich lässt sich das ganze auch problemlos per Tasmota betreiben, noch besser funktioniert es jedoch für meinen Geschmack mit ESPHome. Hier ist kein rumgefummel mit dem Backlog und den TuyaIDs nötig. ESPHome liest die ID's von dem Tuya Gerät aus und stellt sie dann mit den Datenpunkten im Log zur Verfügung. Man muss anschließend nur noch rausfinden, welche ID zu welcher Funktion gehört. Dies habe ich bereits gemacht. Einfach meine [ESPHome Vorlage](#esphome-vorlage) benutzen.
 
 Vorbereitung:
 Zunächst muss das Gerät geöffnet werden, dazu werden die Schrauben Seitlich am Gerät entfernt. Davon gibt es an beiden Seiten jeweils zwei Stück. Nachdem man die Front-Glasscheibe entfernt hat, kann man auf der rechten Seite unter der Segment-Anzeige eine kleine Platine mit der blauen WBR3 MCU sehen. Dafür muss man nur eine Schraube lösen. Anschließend kann man den Stecker samt Platine von der Hauptplatine des Bornholm lösen.
@@ -11,12 +11,12 @@ Die alte Tuya MCU muss nun ausgelötet werden. Am besten funktioniert dies mit e
 
 ![Foto der Platine mit der alten MCU](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/bild1.png?raw=true)
 
-Ich habe für meinen Test einen Wemos D1 Mini benutzt, da ich diesen gerade zur Hand hatte. Auf diesem wird zunächst ESPHome aufgespielt. Dazu kann die von mir zur Verfügung gestellte Vorlage benutzt werden, die schon alle Datenpunkte für die UART Verbindung zur Verfügung stellt.
+Ich habe für meinen Test einen Wemos D1 Mini benutzt, da ich diesen gerade zur Hand hatte. Auf diesem wird zunächst ESPHome aufgespielt. Dazu kann die von mir zur Verfügung gestellte [ESPHome Vorlage](#esphome-vorlage) benutzt werden, die schon alle Datenpunkte für die UART Verbindung zur Verfügung stellt.
 
 Verbindungsschema
 ------------------------------
 
-Jetzt wird der neue ESP8266 mit den Lötpads der Bornholm Platine verbunden, so wie auf dem oberen Bild zu sehen ist. Alternativ sollte auch ein ESP-12F funktionieren, dieser kann einfach 1:1 mit der alten MCU getauscht werden, da dass Pinout kompatibel ist. Dies habe ich jedoch noch nicht getestet, spricht aber theoretisch nichts dagegen.
+Jetzt wird der neue ESP8266 mit den Lötpads der Bornholm Platine verbunden, so wie auf dem oberen Bild zu sehen ist. Alternativ sollte auch ein ESP-12F funktionieren, dieser kann einfach 1:1 mit der alten MCU getauscht werden, da dass Pinout kompatibel ist. Dies habe ich jedoch noch nicht getestet, es spricht aber theoretisch nichts dagegen.
 
 Ansonsten werden die Kabel wie folgt angelötet:
 
@@ -32,10 +32,10 @@ TX > RXD
 
 ![Anschlussschematik](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/schematic1.png?raw=true)
 
-ESPHome Vorlage
+# ESPHome Vorlage
 ------------------------------
 
-Spätestens jetzt die ESPHome Vorlage auf den ESP flashen. Natürlich muss diese nach eigenen Wünschen noch angepasst werden. Zur Verfügung steht eine Deutsche, sowie eine Englische Version. Ich rate natürlich ESPHome schon vor den Einbau in das Gerät aufzuspielen, damit man hinterher jegliche Änderungen OTA auf den ESP aufspielen kann.
+Spätestens jetzt die ESPHome Vorlage auf den ESP flashen. Natürlich muss diese nach eigenen Wünschen noch angepasst werden. Zur Verfügung steht eine [Deutsche](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/klarstein-bornholm-de.yaml), so wie eine [Englische](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/klarstein-bornholm-en.yaml) Version. Ich rate natürlich ESPHome schon vor den Einbau in das Gerät aufzuspielen, damit man hinterher jegliche Änderungen per Wireless OTA auf den ESP aufspielen kann!
 
 Die Vorlage stellt drei Schalter zur Verfügung: 
 - Heizen: An/Aus
