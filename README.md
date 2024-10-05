@@ -51,6 +51,7 @@ Folgende Nummern (die als Slider eingestellt werden können):
 - Timer (0-24 Stunden, dabei ist 0 zum ausschalten des Timer)
 
 Ein Beispiel für die Einbindung ins Dashboard:
+------------------------------
 
 ![Beispiel HA](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/ha_1.jpg?raw=true)
 
