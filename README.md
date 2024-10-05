@@ -49,3 +49,83 @@ Folgende Nummern (die als Slider eingestellt werden können):
 - Zieltemperatur (05-45°C)
 - Heizmodus (0 = Maximaler Modus (2500W), 1 = Mittlerer Modus (1000W), 2 = Minimaler Modus)
 - Timer (0-24 Stunden, dabei ist 0 zum ausschalten des Timer)
+
+Ein Beispiel für die Einbindung ins Dashboard:
+
+Dafür wird benötigt:
+
+[Mushroom Cards](https://github.com/piitaya/lovelace-mushroom)
+[Bubble Cards](https://github.com/Clooos/Bubble-Card)
+[Custom Card](https://github.com/thomasloven/lovelace-card-mod)
+
+Code für die Bubble Card:
+```
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#bornholm"
+    name: Klarstein Bornholm
+    icon: mdi:heat-pump
+  - type: custom:mushroom-entity-card
+    entity: switch.esphome_klarstein_power
+    tap_action:
+      action: toggle
+    name: Heizmodus
+  - type: custom:mushroom-number-card
+    entity: number.esphome_klarstein_zieltemperatur
+    name: Zieltemperatur
+  - type: custom:mushroom-number-card
+    entity: number.esphome_klarstein_heizmodus
+    name: Heizstufe
+    primary_info: name
+    layout: horizontal
+    card_mod:
+      style:
+        mushroom-state-info$: |
+          .secondary {
+             visibility: hidden;
+           }
+           .secondary:before {
+             visibility: visible;
+             content:
+               {% set sensor = states('number.esphome_klarstein_heizmodus') %}
+               {% if sensor | int == 0 %}"Maximum"
+               {% elif sensor | int == 1 %}"Medium"
+               {% elif sensor | int == 2 %}"Minimum"
+               {% endif %}
+               
+          }
+  - type: custom:mushroom-number-card
+    entity: number.esphome_klarstein_timer_stunden
+    name: "Timer (Stunden):"
+    layout: horizontal
+```
+Für das Dashboard habe ich die Mushroom-Entity Card benutzt;
+```
+type: custom:mushroom-entity-card
+entity: switch.esphome_klarstein_power
+name: Klarstein Bornholm
+layout: horizontal
+tap_action:
+  action: navigate
+  navigation_path: "#bornholm"
+hold_action:
+  action: toggle
+card_mod:
+  style:
+    mushroom-state-info$: |
+      .secondary {
+         visibility: hidden;
+       }
+       .secondary:before {
+         visibility: visible;
+         content:
+           "{{ 'Modus: ' }}"
+           {% set sensor = states('switch.esphome_klarstein_power') %}
+           {% if sensor == 'on' %}"An "
+           {% else %}"Aus "
+           {% endif %}
+          "{{ "| Temperatur: " + states('sensor.esphome_klarstein_temperatur', with_unit=True) + " | Zieltemp: " + states('number.esphome_klarstein_zieltemperatur') + " °C" }}";
+       }
+```
