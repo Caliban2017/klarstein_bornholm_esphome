@@ -137,3 +137,5 @@ card_mod:
           "{{ "| Temperatur: " + states('sensor.esphome_klarstein_temperatur', with_unit=True) + " | Zieltemp: " + states('number.esphome_klarstein_zieltemperatur') + " °C" }}";
        }
 ```
+Zusatzinfo:
+Leider ist die Heizstufe ein wenig verwirrend, weil die höchste Stufe 0 ist und die kleinste Stufe ist 2, sprich die Stufen sind sozusagen Invertiert. Wenn jemand eine Idee hat, wie man dafür eine ansprechendere Ansteuerung im Home-Assistant realisieren kann, kann er mir dies gerne zukommen lassen und werde es dann hier ergänzen! Denkbar wäre z.B. eine Auswahlbox statt einer Nummerbox, wo die Werte 0,1,2 gegen sowas wie Max, Med und Min ersetzt werden.
