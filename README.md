@@ -9,7 +9,7 @@ Zunächst muss das Gerät geöffnet werden, dazu werden die Schrauben Seitlich a
 
 Die alte Tuya MCU muss nun ausgelötet werden. Am besten funktioniert dies mit einer Heißluftstation, alternativ kann man es aber auch mit Entlötlitze oder Entlötpumpe probieren. Natürlich darauf achten keine Lötpads zu zerstören!
 
-![alt text](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/bild1.png?raw=true)
+![Foto der Platine mit der alten MCU](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/bild1.png?raw=true)
 
 Ich habe für meinen Test einen Wemos D1 Mini benutzt, da ich diesen gerade zur Hand hatte. Auf diesem wird zunächst ESPHome aufgespielt. Dazu kann die von mir zur Verfügung gestellte Vorlage benutzt werden, die schon alle Datenpunkte für die UART Verbindung zur Verfügung stellt.
 
@@ -30,7 +30,7 @@ RX > TXD
 
 TX > RXD
 
-![alt text](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/schematic1.png?raw=true)
+![Anschlussschematik](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/schematic1.png?raw=true)
 
 ESPHome Vorlage
 ------------------------------
@@ -52,11 +52,18 @@ Folgende Nummern (die als Slider eingestellt werden können):
 
 Ein Beispiel für die Einbindung ins Dashboard:
 
+![Beispiel HA](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/ha_1.jpg?raw=true)
+
+![Beispiel HA](https://github.com/Caliban2017/klarstein_bornholm_esphome/blob/main/ha_2.jpg?raw=true)
+
 Dafür wird benötigt:
 
 [Mushroom Cards](https://github.com/piitaya/lovelace-mushroom)
+
 [Bubble Cards](https://github.com/Clooos/Bubble-Card)
+
 [Custom Card](https://github.com/thomasloven/lovelace-card-mod)
+
 
 Code für die Bubble Card:
 ```
